@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Container, Form, Row, Col, Table } from "react-bootstrap";
 import RenderizadorProduto from "../Renderizadores/RenderizadorProduto";
+import { useSelector } from "react-redux";
 
 export default function TabelaCategorias(props) {
   const [categoriaValue, setCategoriaValue] = useState("A"); // Inicialize o estado categoriaValue
 
-  const lista = JSON.parse(localStorage.getItem("produtos"));
+  const {status,mensagem,listaProduto} = useSelector(state => state.produto)
 
   function mudancaSelect(event) {
     const componente = event.currentTarget;
@@ -54,7 +55,7 @@ export default function TabelaCategorias(props) {
           </tr>
         </thead>
         <tbody>
-          {lista.map((produto) =>
+          {listaProduto.map((produto) =>
             produto.categoria === categoriaValue ? (
               <RenderizadorProduto key={produto.id} produto={produto} acoes={false} />
             ) : null
