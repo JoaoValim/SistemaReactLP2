@@ -1,0 +1,21 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.form-cad-produto{
+    margin-top: 4em;
+}
+
+.cad-produto-button{
+    margin-left: 10em;
+}
+
+.form-cad-cliente{
+    margin-top: 4em;
+}
+
