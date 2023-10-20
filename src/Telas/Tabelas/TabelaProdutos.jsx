@@ -1,9 +1,10 @@
 import { Button, Container, Table } from "react-bootstrap";
 import "./Tabela.css";
+import { useSelector } from "react-redux";
 import RenderizadorProduto from "../Renderizadores/RenderizadorProduto";
 export default function TabelaProdutos(props) {
-    const lista = JSON.parse(localStorage.getItem("produtos"));
-
+    const {status,mensagem,lista} = useSelector(state=>state.produto);
+    console.log(lista)
     return (
         <Container>
             <div className="btn-tabela-produto">

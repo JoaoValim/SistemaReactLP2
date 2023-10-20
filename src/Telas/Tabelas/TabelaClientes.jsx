@@ -8,7 +8,6 @@ export default function TabelaClientes(props) {
 
     const [alerta, setAlerta] = useState(false); 
     const {status,mensagem,listaClientes} = useSelector(state=>state.cliente);
-    console.log(listaClientes)
     const dispatch = useDispatch()
 
     function excluir(cliente){
