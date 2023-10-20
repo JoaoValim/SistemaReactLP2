@@ -55,11 +55,12 @@ export default function TabelaCategorias(props) {
           </tr>
         </thead>
         <tbody>
-          {listaProduto.map((produto) =>
-            produto.categoria === categoriaValue ? (
-              <RenderizadorProduto key={produto.id} produto={produto} acoes={false} />
-            ) : null
-          )}
+          {listaProduto.map((produto) => {
+            if (produto.categoria === categoriaValue){
+              return <RenderizadorProduto key={produto.id} produto={produto} acoes={false} />
+            }
+          })
+        }
         </tbody>
       </Table>
     </Container>

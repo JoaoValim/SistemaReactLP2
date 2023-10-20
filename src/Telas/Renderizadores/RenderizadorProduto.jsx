@@ -5,7 +5,7 @@ import { remover } from "../../redux/produtoReducer";
 export default function RenderizadorProduto(props) {
   const dispatch = useDispatch();
   function excluir(produto) {
-        let lista = JSON.parse(localStorage.getItem("produtos"));
+        
         if(window.confirm('Deseja realmente excluir esse produto?')){
           dispatch(remover(produto))
           window.location.reload();
