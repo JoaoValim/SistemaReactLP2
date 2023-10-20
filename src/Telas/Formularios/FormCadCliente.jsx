@@ -32,7 +32,7 @@ export default function FormCadCliente(props) {
 
     function ManipularSubmit(e) {
         const form = e.currentTarget;
-        var lista
+        
         if (form.checkValidity()) {
             //todos os campos preenchidos
             //mandar os dados para o backend
