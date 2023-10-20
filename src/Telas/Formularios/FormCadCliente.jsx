@@ -5,11 +5,15 @@
 import { Button, Container, Form, Row, Col, FloatingLabel, Alert } from "react-bootstrap";
 import { useState } from "react";
 import "./FormStyle.css";
+import { adicionar } from "../../redux/clienteReducer";
+import { atualizar } from "../../redux/clienteReducer";
+import { useDispatch } from "react-redux";
 
 export default function FormCadCliente(props) {
     const [cliente, setCliente] = useState(props.clienteEdicao);
     const [formValidado, setFormValidado] = useState(false);
     const [alerta, setAlerta] = useState(false);
+    const dispatch = useDispatch()
     const tipoJson = {
         cpf:'',
         nome:'',
@@ -34,15 +38,10 @@ export default function FormCadCliente(props) {
             //mandar os dados para o backend
             if (!props.modoEdicao) {
                 //Nao esta no modo edicao
-                props.setLista([...props.lista, cliente])
+                dispatch(adicionar(cliente))
             } else {
                 //Esta no modo edicao
-                let i=0;
-                while(i<props.lista.length && props.lista[i].cpf !== cliente.cpf)
-                    i++
-                lista = props.lista
-                lista[i]=cliente
-                props.setLista(lista)
+                dispatch(atualizar(cliente))
             }
             if(!props.modoEdicao)  
                 setCliente(tipoJson)

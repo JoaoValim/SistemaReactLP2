@@ -1,21 +1,24 @@
 import { Button, Container, Table, Alert} from "react-bootstrap";
+import { remover } from "../../redux/clienteReducer";
+import {useSelector,useDispatch } from "react-redux";
 import { useState } from "react";
 import "./Tabela.css";
 
 export default function TabelaClientes(props) {
 
     const [alerta, setAlerta] = useState(false); 
+    const {status,mensagem,listaClientes} = useSelector(state=>state.cliente);
+    console.log(listaClientes)
+    const dispatch = useDispatch()
 
     function excluir(cliente){
-        console.log(props.lista)
-        if(window.confirm('Deseja realmente excluir? '))
-        props.setLista(props.lista.filter((itemLista=> cliente.cpf!==itemLista.cpf)))
-        console.log(props.lista.filter((itemLista=> cliente.cpf!==itemLista.cpf)))
-
-        setAlerta(true);
-        setTimeout(() => {
-            setAlerta(false);
-        }, 3000);
+        if(window.confirm('Deseja realmente excluir? ')){
+            dispatch(remover(cliente))
+            setAlerta(true);
+            setTimeout(() => {
+                setAlerta(false);
+            }, 3000);
+        }
     }
 
     function editarCliente(cliente){
@@ -45,7 +48,7 @@ export default function TabelaClientes(props) {
                 </thead>
                 <tbody>
                     {
-                        props.lista.map((cliente)=>{
+                        listaClientes.map((cliente)=>{
                             return (
                                 <tr key={cliente.cpf}>
                                     <td>{cliente.cpf}</td>
