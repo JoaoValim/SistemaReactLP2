@@ -3,8 +3,7 @@ import "./Tabela.css";
 import { useSelector } from "react-redux";
 import RenderizadorProduto from "../Renderizadores/RenderizadorProduto";
 export default function TabelaProdutos(props) {
-    const {status,mensagem,lista} = useSelector(state=>state.produto);
-    console.log(lista)
+    const {status,mensagem,listaProduto} = useSelector(state=>state.produto);   
     return (
         <Container>
             <div className="btn-tabela-produto">
@@ -27,7 +26,7 @@ export default function TabelaProdutos(props) {
                 </thead>
                 <tbody>
                     {
-                        lista.map((produto)=>
+                        listaProduto.map((produto)=>
                             <RenderizadorProduto  key={produto.id} produto={produto} setmodoEdicao={props.setmodoEdicao} formulario={props.exibirFormulario} setEdicao={props.setEdicao} acoes={true} />
                         )
                     }

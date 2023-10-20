@@ -7,12 +7,15 @@ import Row from 'react-bootstrap/Row';
 import Alert from 'react-bootstrap/Alert';
 import "./FormStyle.css";
 import { Container } from 'react-bootstrap';
+import {adicionar,atualizar} from '../../redux/produtoReducer'
+import { useDispatch } from 'react-redux';
 
 import AtualizarProduto from '../../ferramentas/atualizarProduto';
 
 export default function FormCadProduto(props) {
   const [validated, setValidated] = useState(false);
   const [alerta, setAlerta] = useState(false);
+  const dispatch = useDispatch()
   var confirm = 0
 
   function manipularMudancas(e) {
@@ -26,11 +29,7 @@ export default function FormCadProduto(props) {
       if(!props.modoEdicao){
         setAlerta(true);
         setValidated(true);
-        const lista = JSON.parse(localStorage.getItem("produtos"))
-        let json = props.produto
-        json.id = lista.length + 1 
-        lista.push(json)
-        localStorage.setItem("produtos",JSON.stringify(lista))
+        dispatch(adicionar(props.produto))
         setTimeout(() => {
           setAlerta(false);
           props.setProduto(props.tipoJson)

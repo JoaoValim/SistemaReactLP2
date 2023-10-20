@@ -1,11 +1,13 @@
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { remover } from "../../redux/produtoReducer";
 
 export default function RenderizadorProduto(props) {
+  const dispatch = useDispatch();
   function excluir(produto) {
         let lista = JSON.parse(localStorage.getItem("produtos"));
         if(window.confirm('Deseja realmente excluir esse produto?')){
-          lista = lista.filter((itemLista) => itemLista.id !== produto.id);
-          localStorage.setItem("produtos", JSON.stringify(lista));
+          dispatch(remover(produto))
           window.location.reload();
         }
         

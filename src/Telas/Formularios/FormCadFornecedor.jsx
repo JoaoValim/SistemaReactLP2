@@ -5,8 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Alert, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { adicionar } from '../../redux/clienteReducer';
-import { atualizar } from '../../redux/clienteReducer';
+import { adicionar,atualizar} from '../../redux/fornecedoresReduce'
 
 
 export default function FormCadFornecedor(props) {

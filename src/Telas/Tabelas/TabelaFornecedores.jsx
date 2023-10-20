@@ -1,6 +1,6 @@
 import { Button, Container, Table } from "react-bootstrap";
 import { useState } from "react";
-import { remover } from "../../redux/clienteReducer";
+import { remover } from "../../redux/fornecedoresReduce";
 import { Alert } from "react-bootstrap";
 import {useSelector,useDispatch } from "react-redux";
 import "./Tabela.css";
@@ -9,7 +9,7 @@ import "./Tabela.css";
 export default function TabelaFornecedor(props) {
 
     const [alerta,setAlerta] = useState(false);
-    const {status,mensagem,listaForn} = useSelector(state=>state.fornecedor)
+    const {status,mensagem,listaFornecedores} = useSelector(state=>state.fornecedor)
     const dispatch = useDispatch();
     function excluir(fornecedor) {
         if (window.confirm('Deseja realmente excluir? ')) {
@@ -52,7 +52,7 @@ export default function TabelaFornecedor(props) {
                 </thead>
                 <tbody>
                     {
-                        listaForn.map((fornecedor) => {
+                        listaFornecedores.map((fornecedor) => {
                             return (
                                 <tr key={fornecedor.cnpj}>
                                     <td>{fornecedor.nome}</td>

@@ -19,15 +19,12 @@ const fornecedorSlice = createSlice({
             state.listaFornecedores = state.listaFornecedores.filter(forne => forne.cnpj !== action.payload.cnpj);
         },
         atualizar:(state,action)=>{
-            //Atualizar implicará em excluir o cliente da lista e adicioná-lo novamente com seus dados alterados
-            //remover -> adicionar novamente com dados atualizados
-            const listaTemporariaClientes = state.listaFornecedores.filter(cliente => cliente.cnpj !== action.payload.cnpj);
-            state.listaFornecedores = [...listaTemporariaClientes, action.payload.cliente];
+            
+            const listaTemporariaClientes = state.listaFornecedores.filter(forn => forn.cnpj !== action.payload.cnpj);
+            state.listaFornecedores = [...listaTemporariaClientes, action.payload];
         }
 
     }
 });
-//exportando as actions que alteram o estado 'cliente'
 export const {adicionar,remover,atualizar} = fornecedorSlice.actions; 
-//exportando o redutor para ser utilizado na store
 export default fornecedorSlice.reducer;

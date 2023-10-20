@@ -13,7 +13,7 @@ const produtoSlice = createSlice({
   initialState: {
     status: ESTADO.OCIOSO,
     mensagem: '',
-    listaProduto: [], // Inicializa com a lista obtida do localStorage
+    listaProduto: lista // Inicializa com a lista obtida do localStorage
   },
   reducers: {
     adicionar: (state, action) => {
@@ -31,7 +31,7 @@ const produtoSlice = createSlice({
         state.listaProduto=lista
     },
     atualizar: (state, action) => {
-      AtualizarProduto(action.payload)
+      AtualizarProduto(action.payload);
       
     }
   }
