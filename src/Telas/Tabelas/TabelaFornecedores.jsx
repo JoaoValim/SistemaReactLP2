@@ -9,10 +9,7 @@ import "./Tabela.css";
 
 export default function TabelaFornecedor(props) {
 
-    const [alerta, setAlerta] = useState(false);
-    const {status, mensagem, listaForn} = useSelector(state=>state.fornecedor);
-    console.log(listaForn)
-    const dispatch = useDispatch();
+    const [alerta,setAlerta] = useState(false);
 
     function excluir(fornecedor) {
         if (window.confirm('Deseja realmente excluir? ')) {
