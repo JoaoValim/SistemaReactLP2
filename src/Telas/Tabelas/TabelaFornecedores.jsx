@@ -2,15 +2,15 @@ import { Button, Container, Table } from "react-bootstrap";
 import { useState } from "react";
 import { remover } from "../../redux/clienteReducer";
 import { Alert } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import {useSelector,useDispatch } from "react-redux";
 import "./Tabela.css";
 
 
 export default function TabelaFornecedor(props) {
 
     const [alerta,setAlerta] = useState(false);
-
+    const {status,mensagem,listaForn} = useSelector(state=>state.fornecedor)
+    const dispatch = useDispatch();
     function excluir(fornecedor) {
         if (window.confirm('Deseja realmente excluir? ')) {
 
